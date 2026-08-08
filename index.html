@@ -1,30 +1,40 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>4u – Response Layer</title>
+<title>IM ICE i HIT U</title>
 
 <style>
-body{background:#000;color:#0f0;font-family:monospace;padding:20px;}
-pre{background:#111;padding:20px;border:1px solid #333;}
-button{background:#111;color:#0f0;border:1px solid #333;padding:8px 16px;}
+body {
+    margin: 0;
+    background: #00111a;
+    color: #66ccff;
+    font-family: monospace;
+    text-align: center;
+    padding-top: 20px;
+}
+iframe {
+    width: 100vw;
+    height: 90vh;
+    border: none;
+}
 </style>
-</head>
 
+</head>
 <body>
 
-<h1>4u – Response Layer</h1>
+<h1>IM ICE — i HIT U</h1>
 
-<button onclick="show()">RESPO</button>
+<iframe id="iceFrame" src="i.html"></iframe>
 
-<pre id="out">Bereit...</pre>
+<script>
+const pages = ["i.html", "o.html", "u.html"];
+let index = 0;
 
-<script type="module">
-import { respo } from "./respo.js";
-
-function show(){
-  out.textContent = JSON.stringify(respo, null, 2);
-}
+setInterval(() => {
+    index = (index + 1) % pages.length;
+    document.getElementById("iceFrame").src = pages[index];
+}, 1000);
 </script>
 
 </body>
