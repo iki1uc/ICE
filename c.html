@@ -1,32 +1,5 @@
-<functions>
-
-    <!-- f = FEUER-Bildung -->
-    <f>
-        <ignite>FEUER.start()</ignite>
-        <rise>erfuellung.level++</rise>
-        <heat>energie.flow = "hoch"</heat>
-    </f>
-
-    <!-- e = Erfüllung -->
-    <e>
-        <measure>erfuellung.check()</measure>
-        <pulse>erfuellung.pulse()</pulse>
-        <gain>erfuellung.level += 0.1</gain>
-    </e>
-
-    <!-- ü = überflüssig / flüssig -->
-    <ue>
-        <melt>ICE.state = "flüssig"</melt>
-        <flow>AQUA.flow()</flow>
-        <soft>energie.form = "weich"</soft>
-    </ue>
-
-    <!-- c = crystall / idee / vorhaben -->
-    <c>
-        <crystal>ICE.state = "kristall"</crystal>
-        <idea>vorhaben.init()</idea>
-        <focus>struktur.clear()</focus>
-    </c>
-
-</functions>
-
+<c>
+    <crystal>ICE.state = "kristall"</crystal>
+    <idea>vorhaben.init()</idea>
+    <focus>struktur.clear()</focus>
+</c>
