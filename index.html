@@ -1,79 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>ICE — C F E System</title>
-
-<style>
-    body {
-        margin: 0;
-        background: #000;
-        color: #66ccff;
-        font-family: monospace;
-        text-align: center;
-        padding-top: 20px;
-    }
-
-    iframe {
-        width: 100vw;
-        height: 90vh;
-        border: none;
-    }
-
-    h1 {
-        font-weight: normal;
-        letter-spacing: 2px;
-    }
-</style>
-
-</head>
-<body>
-
-<h1>ICE — C F E System</h1>
-
-<iframe id="stationFrame" src="c.html"></iframe>
+<canvas id="shine" width="900" height="600"></canvas>
 
 <script>
-    <script type="module">
+const ctx = document.getElementById("shine").getContext("2d");
+let t = 0;
 
-import PI from "../PI.js";
-import { OSF_VECTOR, ECO_ROOT_VECTOR } from "../OSF.vector";
-import { OSF_BEAM, OSF_PHI, OSF_STATION } from "../OUR.js";
+function animate(){
+    t += 0.01;
+    ctx.clearRect(0,0,900,600);
 
-async function ICE_CORE() {
+    const D = window.ICE_DATA;
+    const axes = D.OSF_VECTOR.DIR();
+    const qi = D.QI;
+    const iqq = D.IQQ;
 
-    const RAUM = await (await fetch("../RAUM.json")).json();
-    const REAL = await (await fetch("../REAL.json")).json();
-    const BIL  = await (await fetch("../BIL.json")).json();
+    for(let i=0;i<756;i++){
+        const x = 450 + Math.sin(t + i*0.01) * axes.dx * 0.002;
+        const y = 300 + Math.cos(t + i*0.01) * axes.dy * 0.002;
 
-    window.ICE_DATA = {
-        PI,
-        OSF_VECTOR,
-        ECO_ROOT_VECTOR,
-        OSF_BEAM,
-        OSF_PHI,
-        OSF_STATION,
-        RAUM,
-        REAL,
-        BIL,
-        QI: PI.phiScale(PI.pi),
-        IQQ: PI.muShift(PI.vec(1,1))
-    };
+        ctx.fillStyle = `rgba(${qi*10}, ${iqq.a*20}, 255, 0.7)`;
+        ctx.beginPath();
+        ctx.arc(x,y,2,0,Math.PI*2);
+        ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
 }
 
-ICE_CORE();
-
-
-    
-    
-    const stations = ["c.html", "f.html", "e.html"];
-    let pos = 0;
-
-    setInterval(() => {
-        pos = (pos + 1) % stations.length;
-        document.getElementById("stationFrame").src = stations[pos];
-    }, 1000);
+animate();
 </script>
-
-</body>
-</html>
