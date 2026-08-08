@@ -2,39 +2,45 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>IM ICE i HIT U</title>
+<title>ICE — C F E System</title>
 
 <style>
-body {
-    margin: 0;
-    background: #00111a;
-    color: #66ccff;
-    font-family: monospace;
-    text-align: center;
-    padding-top: 20px;
-}
-iframe {
-    width: 100vw;
-    height: 90vh;
-    border: none;
-}
+    body {
+        margin: 0;
+        background: #000;
+        color: #66ccff;
+        font-family: monospace;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    iframe {
+        width: 100vw;
+        height: 90vh;
+        border: none;
+    }
+
+    h1 {
+        font-weight: normal;
+        letter-spacing: 2px;
+    }
 </style>
 
 </head>
 <body>
 
-<h1>IM ICE — i HIT U</h1>
+<h1>ICE — C F E System</h1>
 
-<iframe id="iceFrame" src="i.html"></iframe>
+<iframe id="stationFrame" src="c.html"></iframe>
 
 <script>
-const pages = ["i.html", "o.html", "u.html"];
-let index = 0;
+    const stations = ["c.html", "f.html", "e.html"];
+    let pos = 0;
 
-setInterval(() => {
-    index = (index + 1) % pages.length;
-    document.getElementById("iceFrame").src = pages[index];
-}, 1000);
+    setInterval(() => {
+        pos = (pos + 1) % stations.length;
+        document.getElementById("stationFrame").src = stations[pos];
+    }, 1000);
 </script>
 
 </body>
