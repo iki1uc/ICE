@@ -34,6 +34,38 @@
 <iframe id="stationFrame" src="c.html"></iframe>
 
 <script>
+    <script type="module">
+
+import PI from "../PI.js";
+import { OSF_VECTOR, ECO_ROOT_VECTOR } from "../OSF.vector";
+import { OSF_BEAM, OSF_PHI, OSF_STATION } from "../OUR.js";
+
+async function ICE_CORE() {
+
+    const RAUM = await (await fetch("../RAUM.json")).json();
+    const REAL = await (await fetch("../REAL.json")).json();
+    const BIL  = await (await fetch("../BIL.json")).json();
+
+    window.ICE_DATA = {
+        PI,
+        OSF_VECTOR,
+        ECO_ROOT_VECTOR,
+        OSF_BEAM,
+        OSF_PHI,
+        OSF_STATION,
+        RAUM,
+        REAL,
+        BIL,
+        QI: PI.phiScale(PI.pi),
+        IQQ: PI.muShift(PI.vec(1,1))
+    };
+}
+
+ICE_CORE();
+
+
+    
+    
     const stations = ["c.html", "f.html", "e.html"];
     let pos = 0;
 
